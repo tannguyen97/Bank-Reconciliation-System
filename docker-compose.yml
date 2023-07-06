@@ -1,9 +1,16 @@
 version: '3'
 services:
   rabbitmq:
-    image: rabbitmq:3.12.1
+    image: docker.io/bitnami/rabbitmq:3.12
     ports:
-      - 5672:5672
+      - '4369:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_PASSWORD=admin123
   db:
     image: postgres:15.3
     restart: always

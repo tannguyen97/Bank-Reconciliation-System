@@ -27,6 +27,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
+    },
+    "import-transaction": {
+      "type": "application",
+      "root": "apps/import-transaction",
+      "entryFile": "main",
+      "sourceRoot": "apps/import-transaction/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/import-transaction/tsconfig.app.json"
+      }
+    },
+    "rabbitmq": {
+      "type": "library",
+      "root": "libs/rabbitmq",
+      "entryFile": "index",
+      "sourceRoot": "libs/rabbitmq/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/rabbitmq/tsconfig.lib.json"
+      }
     }
   }
 }
