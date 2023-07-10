@@ -23,6 +23,12 @@
       ],
       "@app/rabbitmq/*": [
         "libs/rabbitmq/src/*"
+      ],
+      "@app/authlib": [
+        "libs/authlib/src"
+      ],
+      "@app/authlib/*": [
+        "libs/authlib/src/*"
       ]
     }
   }

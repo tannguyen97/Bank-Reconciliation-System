@@ -1,0 +1,5 @@
+const MAX_MESSAGE_DATA = 1200000;
+
+export {
+    MAX_MESSAGE_DATA
+}

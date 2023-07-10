@@ -1,7 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 import { ImportTransactionService } from './import-transaction.service';
 import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
 import { RabbitmqService } from '@app/rabbitmq';
+import { TransactionDto } from './dto/transaction.dto';
 
 @Controller()
 export class ImportTransactionController {
@@ -10,14 +11,14 @@ export class ImportTransactionController {
     private readonly rabbitmqService: RabbitmqService
   ) {}
 
-  @Get()
-  getHello(): string {
-    return this.importTransactionService.getHello();
-  }
-
-  @MessagePattern('csv_uploaded')
-  import(@Payload() data: any, @Ctx() context: RmqContext) {
-    this.importTransactionService.import(data);
-    this.rabbitmqService.ack(context);
+  @MessagePattern('file_uploaded')
+  import(@Payload() data: TransactionDto[], @Ctx() context: RmqContext) {
+    try {
+      this.importTransactionService.import(data);
+      this.rabbitmqService.ack(context);
+      return "upload success";
+    } catch (error) {
+      throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 }

@@ -1,10 +1,10 @@
 enum TracsactionType {
-    DEPOSIT = 'deposit'
-
+    DEPOSIT = 'deposit',
+    WITHRAW = 'withdraw'
 }
 export class TransactionDto {
-    date: Date
+    date: string
     content: string
     amount: number
-    type: string
+    type: TracsactionType
 }

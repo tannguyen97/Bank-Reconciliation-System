@@ -1,22 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/csv-uploader/src",
+  "sourceRoot": "apps/file-uploader/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/csv-uploader/tsconfig.app.json"
+    "tsConfigPath": "apps/file-uploader/tsconfig.app.json"
   },
   "monorepo": true,
-  "root": "apps/csv-uploader",
+  "root": "apps/file-uploader",
   "projects": {
-    "csv-uploader": {
+    "file-uploader": {
       "type": "application",
-      "root": "apps/csv-uploader",
+      "root": "apps/file-uploader",
       "entryFile": "main",
-      "sourceRoot": "apps/csv-uploader/src",
+      "sourceRoot": "apps/file-uploader/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/csv-uploader/tsconfig.app.json"
+        "tsConfigPath": "apps/file-uploader/tsconfig.app.json"
       }
     },
     "auth": {
@@ -44,6 +44,15 @@
       "sourceRoot": "libs/rabbitmq/src",
       "compilerOptions": {
         "tsConfigPath": "libs/rabbitmq/tsconfig.lib.json"
+      }
+    },
+    "authlib": {
+      "type": "library",
+      "root": "libs/authlib",
+      "entryFile": "index",
+      "sourceRoot": "libs/authlib/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/authlib/tsconfig.lib.json"
       }
     }
   }

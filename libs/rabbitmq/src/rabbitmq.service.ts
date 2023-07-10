@@ -12,8 +12,6 @@ export class RabbitmqService {
       options: {
         urls: [this.configService.get<string>('RABBIT_MQ_URI')],
         queue: this.configService.get<string>(`RABBIT_MQ_${queue}_QUEUE`),
-        // urls: ['amqp://user:admin123@localhost:5672'],
-        // queue: 'importing_transaction',
         noAck,
         persistent: true,
       },

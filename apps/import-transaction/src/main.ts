@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ImportTransactionModule } from './import-transaction.module';
 import { RabbitmqService } from '@app/rabbitmq';
 import { RmqOptions, Transport } from '@nestjs/microservices';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const rmqUri = process.env.RABBIT_MQ_URI;
@@ -11,11 +12,10 @@ async function bootstrap() {
     options: {
       urls: [rmqUri],
       queue: rmqQueue,
-      noAck:false,
-      persistent: true,
+      noAck: false
     },
   });
-  
+  app.useGlobalPipes(new ValidationPipe());
   app.listen();
 }
 bootstrap();
