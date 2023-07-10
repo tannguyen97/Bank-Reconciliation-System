@@ -5,6 +5,7 @@ This project provides API for client to call via HTTP(s) protocolto import the t
 ## Project structure
 
 Diagram Architecture
+![Bank reconciliation system drawio](https://github.com/tannguyen97/Bank-Reconciliation-System/assets/47649797/ca46ab16-a61a-4e38-a8ae-6e3c9eb3bdb8)
 
 
 
