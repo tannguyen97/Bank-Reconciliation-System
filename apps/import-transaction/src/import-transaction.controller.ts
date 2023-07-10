@@ -16,7 +16,7 @@ export class ImportTransactionController {
     try {
       this.importTransactionService.import(data);
       this.rabbitmqService.ack(context);
-      return "upload success";
+      return "UPLOAD_SUCCESS";
     } catch (error) {
       throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

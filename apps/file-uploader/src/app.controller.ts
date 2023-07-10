@@ -1,4 +1,4 @@
-import { Controller, Get, ParseFilePipeBuilder, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Param, ParseFilePipeBuilder, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { getExtension } from './util/file.util';
@@ -34,5 +34,12 @@ export class AppController {
     }
     
     return this.appService.uploadExcel(file);
+  }
+
+  @Get('status/:id')
+  importStatus(
+    @Param('id') id: string
+  ) {
+    return this.appService.importStatus(id);
   }
 }

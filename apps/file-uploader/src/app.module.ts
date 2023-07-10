@@ -7,6 +7,8 @@ import * as Joi from 'joi';
 import { CsvModule } from 'nest-csv-parser';
 import { AuthlibModule } from '@app/authlib';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Status } from './entities/import-status.entity';
 
 @Module({
   imports: [
@@ -24,7 +26,23 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
     AuthlibModule,
     RabbitmqModule.register({name:'IMPORTING'}),
-    CsvModule
+    CsvModule,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+          type: 'postgres',
+          host: configService.get('DB_HOST'),
+          port: +configService.get<number>('DB_PORT'),
+          username: configService.get('DB_USERNAME'),
+          password: configService.get('DB_PASSWORD'),
+          database: configService.get('DB_NAME'),
+          entities: [Status],
+          synchronize: true,
+          autoLoadEntities: true
+      }),
+      inject: [ConfigService]
+    }),
+    TypeOrmModule.forFeature([Status]),
   ],
   controllers: [AppController],
   providers: [AppService],
