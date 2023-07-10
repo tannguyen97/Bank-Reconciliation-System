@@ -9,15 +9,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class UsersService implements OnModuleInit{
     constructor(
         @InjectRepository(User) private userRepository: Repository<User>,
-        private configService: ConfigService
     ) {
 
     }
     async onModuleInit() {
-        const username = this.configService.get('USERNAME');
+        const username = process.env.USERNAME;
         const rootAdmin = await this.findOne(username);
         if (!rootAdmin) {
-            const password = await bcrypt.hash(this.configService.get('PASSWORD'), 10);
+            const password = await bcrypt.hash(process.env.PASSWORD, 10);
             const rootUser = {
                 username,
                 password,
