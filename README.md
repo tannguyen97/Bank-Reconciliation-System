@@ -50,4 +50,4 @@ This is list CURL to verify API:
 * /login: login with user created to get authentication token.
 * /upload: API upload file for import transaction, client can choose file cvs, xlsx.
 * /status: Check import transaction status.
-* Link to Import Collection into Postman:
+* Link to Import Collection into Postman: https://drive.google.com/file/d/1B2ieSbP-W6ZUKRgZrRGcHxiIjiClX5io/view?usp=sharing
