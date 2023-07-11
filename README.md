@@ -45,12 +45,11 @@ nest start import-transaction
 nest start auth
 ```
 Application will run by default on port `3001`
-
+### Account test:
+- Username: 'admin'
+- Password: 'admin'
 ## API
 This is list CURL to verify API:
-Account test:
-Username: 'admin'
-Password: 'admin'
 * /login: login with user created to get authentication token.
 * /upload: API upload file for import transaction, client can choose file cvs, xlsx.
 * /status: Check import transaction status.
