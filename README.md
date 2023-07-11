@@ -45,7 +45,7 @@ nest start import-transaction
 nest start auth
 ```
 Application will run by default on port `3001`
-### Account test:
+## Account test:
 - Username: 'admin'
 - Password: 'admin'
 ## API
